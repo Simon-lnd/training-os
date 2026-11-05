@@ -1,6 +1,6 @@
 {
-  "name": "Training OS",
-  "short_name": "Training OS",
+  "name": "TitanFit",
+  "short_name": "TitanFit",
   "description": "Dein persönlicher Trainings-Tracker und Winter-Arc-Planer.",
   "lang": "de-DE",
   "start_url": "./index.html",
