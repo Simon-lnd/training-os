@@ -94,7 +94,8 @@ function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'app
 // GPS-Lauftracker
 let runMode='normal',runWatch=null,runTick=null,runActive=false,runPaused=false;
 let runStartedAt=0,runElapsed=0,runDistanceM=0,lastGPS=null,runPath=[];
-let intervalPhase='work',intervalRound=1,phaseStartedAt=0,phaseStartDistance=0;\nlet liveMap=null,liveLine=null,liveMarker=null,historyMaps=[],largeMap=null;
+let intervalPhase='work',intervalRound=1,phaseStartedAt=0,phaseStartDistance=0;
+let liveMap=null,liveLine=null,liveMarker=null,historyMaps=[],largeMap=null;
 function setRunMode(mode){
  if(runActive||runPaused){toast('Beende zuerst den aktuellen Lauf');return}
  runMode=mode;document.getElementById('intervalSettings').style.display=mode==='interval'?'block':'none';
@@ -104,7 +105,8 @@ function setRunMode(mode){
 }
 function updateWorkUnit(){let timed=document.getElementById('intervalType').value==='time';document.getElementById('workUnit').textContent=timed?'Sekunden':'Meter';document.getElementById('intervalWork').value=timed?120:400}
 document.getElementById('intervalType').addEventListener('change',updateWorkUnit);
-function fmtTime(s){s=Math.max(0,Math.floor(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}\nfunction fmtDuration(s){s=Math.max(0,Math.floor(s));let h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;return (h?h+' h ':'')+(m||h?m+' min ':'')+sec+' s'}
+function fmtTime(s){s=Math.max(0,Math.floor(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+function fmtDuration(s){s=Math.max(0,Math.floor(s));let h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;return (h?h+' h ':'')+(m||h?m+' min ':'')+sec+' s'}
 function fmtPace(m,s){if(m<20||s<=0)return '–';let p=s/(m/1000);return Math.floor(p/60)+':'+String(Math.floor(p%60)).padStart(2,'0')+'/km'}
 function haversine(a,b){const r=6371000,rad=x=>x*Math.PI/180,dLat=rad(b.lat-a.lat),dLon=rad(b.lon-a.lon),x=Math.sin(dLat/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dLon/2)**2;return 2*r*Math.atan2(Math.sqrt(x),Math.sqrt(1-x))}
 function gpsSuccess(pos){
