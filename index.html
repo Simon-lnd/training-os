@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f6f7f8"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Titan Fit"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/icon-180.png">
 <title>TitanFit</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
 :root{--bg:#f5f6f7;--card:#fff;--ink:#17191c;--muted:#707780;--line:#e7e9ec;--accent:#24272b;--soft:#eef0f2;--green:#287d58;--greenbg:#e8f4ed;--radius:20px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:94px}button,input,textarea,select{font:inherit}button{cursor:pointer}.app{max-width:760px;margin:auto;padding:20px 16px 30px}.top{display:flex;justify-content:space-between;align-items:center;margin:8px 2px 22px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:1.6px;color:var(--muted);text-transform:uppercase}.top h1{font-size:27px;letter-spacing:-.8px;margin:5px 0 0}.date{font-size:12px;color:var(--muted);text-align:right}.hero{background:#202327;color:white;border-radius:26px;padding:23px;margin-bottom:16px;position:relative;overflow:hidden}.hero .eyebrow{color:#c6cbd0}.hero h2{font-size:24px;letter-spacing:-.5px;margin:9px 0}.hero p{color:#d0d3d7;line-height:1.45;margin:0 0 17px;font-size:13px}.btn{border:0;border-radius:13px;background:var(--ink);color:white;padding:12px 15px;font-weight:700}.btn.light{background:white;color:#1c1e21}.btn.soft{background:var(--soft);color:var(--ink)}.btn.small{padding:9px 12px;font-size:13px}.btn.full{width:100%}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:17px;margin-bottom:12px;min-width:0}.metric{font-size:27px;font-weight:800;letter-spacing:-.8px;margin:8px 0 3px}.muted{color:var(--muted)}.tiny{font-size:12px}.section-title{font-size:18px;letter-spacing:-.3px;margin:24px 2px 12px;font-weight:800}.card h3{margin:0 0 8px;font-size:15px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.row.start{align-items:flex-start}.pill{font-size:11px;font-weight:750;background:var(--soft);padding:6px 9px;border-radius:999px;color:#444b53}.progress{height:7px;background:#eceef0;border-radius:99px;overflow:hidden;margin:12px 0 6px}.progress span{display:block;height:100%;width:0;background:#282c30;border-radius:99px;transition:width .2s}.field{display:flex;flex-direction:column;gap:6px;margin:12px 0}.field label{font-size:12px;color:var(--muted);font-weight:700}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:12px;background:#fafbfc;padding:12px;color:var(--ink);outline:none}.field textarea{min-height:75px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{border-color:#9ba1a8}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.nav{position:fixed;z-index:5;bottom:0;left:0;right:0;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:8px 7px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:3px}.nav button{flex:1;max-width:150px;border:0;background:transparent;color:#777e86;border-radius:13px;padding:8px 2px;font-size:10px;font-weight:700}.nav button span{display:block;font-size:20px;margin-bottom:3px}.nav button.active{background:#f0f1f3;color:#17191c}.page{display:none}.page.active{display:block}.day{border:1px solid var(--line);background:#fff;border-radius:15px;padding:13px;margin:8px 0}.day.today{border-color:#333;box-shadow:0 0 0 1px #333 inset}.dayname{font-weight:800;min-width:34px}.day input[type=text]{min-width:0;flex:1;border:0;background:transparent;padding:8px 3px;outline:none}.day .check{width:22px;height:22px;accent-color:#25282b}.habit{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.habit:last-child{border-bottom:0}.habit input{width:19px;height:19px;accent-color:#25282b}.habit .label{flex:1}.habit small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.goal{border:1px solid var(--line);border-radius:15px;padding:13px;margin:9px 0;background:#fff}.goal textarea{width:100%;border:0;resize:vertical;min-height:44px;background:transparent;outline:none;padding:6px 0}.goal .goalbottom{display:flex;gap:8px;align-items:center}.goal select{border:1px solid var(--line);border-radius:10px;padding:7px;min-width:0}.logitem{border-bottom:1px solid var(--line);padding:12px 0}.logitem:last-child{border-bottom:0}.empty{padding:24px;text-align:center;color:var(--muted);font-size:13px}.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#202327;color:white;padding:10px 15px;border-radius:12px;font-size:12px;display:none;z-index:10}.danger{color:#9e3e3e;background:#f8eaea}.subnav{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}.note{font-size:12px;color:var(--muted);line-height:1.5}.footer{text-align:center;color:var(--muted);font-size:11px;padding:14px}
 @media(min-width:600px){.app{padding:28px 24px}.top h1{font-size:31px}.hero{padding:28px}.hero h2{font-size:29px}}
@@ -17,6 +18,12 @@
 .run-mode{display:flex;gap:8px}
 .run-mode button{flex:1}
 @media(min-width:600px){.run-stats{grid-template-columns:repeat(4,1fr)}}
+.run-map{height:260px;border-radius:15px;overflow:hidden;background:#eef0f2;margin-top:12px;border:1px solid var(--line)}
+.run-map-mini{height:150px;border-radius:12px;overflow:hidden;background:#eef0f2;margin-top:10px;border:1px solid var(--line);cursor:pointer}
+.map-caption{font-size:11px;color:var(--muted);margin-top:7px}
+.map-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:30;padding:14px;align-items:center;justify-content:center}
+.map-modal.open{display:flex}.map-modal-card{background:white;border-radius:20px;padding:14px;width:min(100%,760px);max-height:92vh;display:flex;flex-direction:column;gap:10px}
+.map-modal-map{height:min(68vh,560px);border-radius:14px;overflow:hidden;background:#eef0f2}
 </style></head>
 <body><main class="app">
 <header class="top"><div><div class="eyebrow">DEIN PERSÖNLICHES SYSTEM</div><h1>Titan Fit<span style="color:#9ba1a8">.</span></h1></div><div class="date" id="todayDate"></div></header>
@@ -52,6 +59,8 @@
 <div class="run-stat"><div class="tiny muted">Ø Pace</div><div class="value" id="runPace">–</div></div>
 <div class="run-stat"><div class="tiny muted">GPS</div><div class="value" id="gpsStatus" style="font-size:16px">Nicht aktiv</div></div>
 </div>
+<div id="liveRunMap" class="run-map" aria-label="Live-Karte deiner Laufstrecke"></div>
+<div class="map-caption">Die Karte lädt OpenStreetMap-Kartendaten und benötigt Internet. Deine GPS-Strecke wird in Titan Fit auf diesem Gerät gespeichert.</div>
 <div id="intervalPhase" class="run-phase" style="display:none"><div class="eyebrow" style="color:#c6cbd0">INTERVALL-COACH</div><div class="phase-name" id="phaseName">Bereit?</div><div class="phase-detail" id="phaseDetail">Starte dein Training.</div><div class="metric" id="phaseProgress" style="color:white">–</div></div>
 <div class="run-controls">
 <button class="btn full" id="runStartBtn" onclick="startRun()">Lauf starten</button><button class="btn soft full" id="runPauseBtn" onclick="pauseRun()" disabled>Pause</button>
@@ -62,11 +71,12 @@
 <div class="section-title">Deine letzten Läufe</div><div class="card" id="runHistory"><div class="empty">Hier erscheinen deine aufgezeichneten Läufe.</div></div>
 </section>
 <section id="settings" class="page"><div class="eyebrow">DEINE EINSTELLUNGEN</div><h2 style="margin:7px 0 4px">Dein System</h2><p class="muted tiny">Deine Einträge werden in diesem Browser auf diesem Gerät gespeichert.</p><div class="card"><h3>Export / Backup</h3><p class="note">Lade eine Sicherung deiner Trainingsdaten herunter, damit du sie später wiederherstellen kannst.</p><button class="btn full" onclick="exportData()">Daten exportieren (JSON)</button><div class="field"><label for="importFile">Sicherung wiederherstellen</label><input type="file" id="importFile" accept="application/json"></div><button class="btn soft full" onclick="importData()">Datei importieren</button></div><div class="card"><h3>Wichtiger Hinweis</h3><p class="note">Diese erste Version verbindet sich nicht automatisch mit Apple Health, Garmin oder Strava. Workouts musst du manuell eintragen. Nutze regelmäßig den Export als Backup.</p></div><div class="card"><h3>Alle Daten löschen</h3><p class="note">Das entfernt deine gespeicherten Workouts, Ziele und Pläne von diesem Browser.</p><button class="btn danger full" onclick="resetData()">Alles zurücksetzen</button></div><div class="footer">TITAN FIT · VERSION 1.1</div></section>
-</main><nav class="nav"><button class="active" data-page="dashboard" onclick="showPage('dashboard')"><span>⌂</span>Übersicht</button><button data-page="log" onclick="showPage('log')"><span>＋</span>Workout</button><button data-page="run" onclick="showPage('run')"><span>⌁</span>Laufen</button><button data-page="plan" onclick="showPage('plan')"><span>▦</span>Wochenplan</button><button data-page="arc" onclick="showPage('arc')"><span>◎</span>Winter Arc</button><button data-page="settings" onclick="showPage('settings')"><span>⚙</span>Mehr</button></nav><div class="toast" id="toast"></div>
+</main><div class="map-modal" id="runMapModal" onclick="if(event.target===this)closeRunMap()"><div class="map-modal-card"><div class="row"><strong id="runMapTitle">Laufstrecke</strong><button class="btn soft small" onclick="closeRunMap()">Schließen</button></div><div id="runMapLarge" class="map-modal-map"></div></div></div><nav class="nav"><button class="active" data-page="dashboard" onclick="showPage('dashboard')"><span>⌂</span>Übersicht</button><button data-page="log" onclick="showPage('log')"><span>＋</span>Workout</button><button data-page="run" onclick="showPage('run')"><span>⌁</span>Laufen</button><button data-page="plan" onclick="showPage('plan')"><span>▦</span>Wochenplan</button><button data-page="arc" onclick="showPage('arc')"><span>◎</span>Winter Arc</button><button data-page="settings" onclick="showPage('settings')"><span>⚙</span>Mehr</button></nav><div class="toast" id="toast"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 const KEY='trainingOS_v1';const days=['Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sonntag'];const shortDays=['Mo','Di','Mi','Do','Fr','Sa','So'];const todayISO=()=>{let d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};const mondayIndex=()=>((new Date().getDay()+6)%7);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function defaults(){return {workouts:[],plan:['Calisthenics / Skills','Krafttraining','Laufen oder Rad','Ruhetag / Mobility','Krafttraining','Ausdauer nach Lust','Ruhetag'],done:{},target:4,arc:{start:todayISO(),end:'',title:'Jeden Tag ein bisschen besser',why:'',reflection:''},goals:[{text:'',category:'Fitness',done:false},{text:'',category:'Skills',done:false}],habits:[{text:'Training oder aktive Erholung',done:{}},{text:'Genug schlafen',done:{}},{text:'Kurz reflektieren',done:{}}]}}
-let data;try{data=JSON.parse(localStorage.getItem(KEY))||defaults()}catch(e){data=defaults()}function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',1900)}function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='log')renderHistory();if(id==='run')renderRunHistory()}
+let data;try{data=JSON.parse(localStorage.getItem(KEY))||defaults()}catch(e){data=defaults()}function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',1900)}function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='log')renderHistory();if(id==='run'){renderRunHistory();initLiveMap()}}
 document.getElementById('todayDate').textContent=new Date().toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'short'});document.getElementById('workDate').value=todayISO();
 document.getElementById('workoutForm').addEventListener('submit',e=>{e.preventDefault();data.workouts.unshift({id:Date.now(),date:document.getElementById('workDate').value,type:document.getElementById('workType').value,name:document.getElementById('workName').value||document.getElementById('workType').value,duration:Number(document.getElementById('workDuration').value)||0,distance:Number(document.getElementById('workDistance').value)||0,details:document.getElementById('workDetails').value,feel:document.getElementById('workFeel').value});e.target.reset();document.getElementById('workDate').value=todayISO();save();toast('Workout gespeichert');showPage('log')});
 function renderHistory(){let el=document.getElementById('workoutHistory');if(!data.workouts.length){el.innerHTML='<div class="empty">Hier erscheinen deine gespeicherten Einheiten.</div>';return}el.innerHTML=data.workouts.slice(0,12).map(w=>`<div class="logitem"><div class="row start"><div style="flex:1;min-width:0"><strong>${esc(w.name)}</strong><div class="tiny muted">${esc(w.date)} · ${esc(w.type)}</div><div class="tiny" style="margin-top:5px">${w.duration?esc(w.duration)+' min':''}${w.distance?' · '+esc(w.distance)+' km':''}</div>${w.details?`<div class="tiny muted" style="white-space:pre-wrap;margin-top:7px">${esc(w.details)}</div>`:''}</div><button class="btn soft small" onclick="deleteWorkout(${w.id})">Löschen</button></div></div>`).join('')}
@@ -84,7 +94,7 @@ function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'app
 // GPS-Lauftracker
 let runMode='normal',runWatch=null,runTick=null,runActive=false,runPaused=false;
 let runStartedAt=0,runElapsed=0,runDistanceM=0,lastGPS=null,runPath=[];
-let intervalPhase='work',intervalRound=1,phaseStartedAt=0,phaseStartDistance=0;
+let intervalPhase='work',intervalRound=1,phaseStartedAt=0,phaseStartDistance=0;\nlet liveMap=null,liveLine=null,liveMarker=null,historyMaps=[],largeMap=null;
 function setRunMode(mode){
  if(runActive||runPaused){toast('Beende zuerst den aktuellen Lauf');return}
  runMode=mode;document.getElementById('intervalSettings').style.display=mode==='interval'?'block':'none';
@@ -94,20 +104,64 @@ function setRunMode(mode){
 }
 function updateWorkUnit(){let timed=document.getElementById('intervalType').value==='time';document.getElementById('workUnit').textContent=timed?'Sekunden':'Meter';document.getElementById('intervalWork').value=timed?120:400}
 document.getElementById('intervalType').addEventListener('change',updateWorkUnit);
-function fmtTime(s){s=Math.max(0,Math.floor(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+function fmtTime(s){s=Math.max(0,Math.floor(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}\nfunction fmtDuration(s){s=Math.max(0,Math.floor(s));let h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;return (h?h+' h ':'')+(m||h?m+' min ':'')+sec+' s'}
 function fmtPace(m,s){if(m<20||s<=0)return '–';let p=s/(m/1000);return Math.floor(p/60)+':'+String(Math.floor(p%60)).padStart(2,'0')+'/km'}
 function haversine(a,b){const r=6371000,rad=x=>x*Math.PI/180,dLat=rad(b.lat-a.lat),dLon=rad(b.lon-a.lon),x=Math.sin(dLat/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dLon/2)**2;return 2*r*Math.atan2(Math.sqrt(x),Math.sqrt(1-x))}
 function gpsSuccess(pos){
  const c=pos.coords,p={lat:c.latitude,lon:c.longitude,accuracy:c.accuracy};
  if(c.accuracy>50){document.getElementById('gpsStatus').textContent='Ungenau';return}
  if(lastGPS){let d=haversine(lastGPS,p),dt=(pos.timestamp-lastGPS.time)/1000;if(d>=3&&dt>0&&d/dt<8){runDistanceM+=d;runPath.push([p.lat,p.lon])}}else{runPath.push([p.lat,p.lon])}
- p.time=pos.timestamp;lastGPS=p;document.getElementById('gpsStatus').textContent='Aktiv';renderRunStats();
+ p.time=pos.timestamp;lastGPS=p;document.getElementById('gpsStatus').textContent='Aktiv';renderRunStats();updateLiveMap(p);
 }
 function gpsError(err){document.getElementById('gpsStatus').textContent='GPS-Fehler';document.getElementById('gpsHint').textContent=err.code===1?'Standortfreigabe verweigert. Erlaube den Standortzugriff für Safari.':'GPS nicht verfügbar. Prüfe die Standortdienste und versuche es erneut.'}
+
+function makeBaseMap(el,center){
+ if(!window.L||!el)return null;
+ const map=L.map(el,{zoomControl:true}).setView(center||[48.0,10.0],15);
+ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+ }).addTo(map);
+ return map;
+}
+function initLiveMap(){
+ const el=document.getElementById('liveRunMap');if(!el||!window.L)return;
+ if(!liveMap){liveMap=makeBaseMap(el,[48.0,10.0]);liveLine=L.polyline([],{color:'#2463eb',weight:5}).addTo(liveMap);}
+ setTimeout(()=>liveMap&&liveMap.invalidateSize(),150);
+}
+function updateLiveMap(p){
+ if(!window.L)return;initLiveMap();if(!liveMap)return;
+ const ll=[p.lat,p.lon];liveLine.addLatLng(ll);
+ if(!liveMarker)liveMarker=L.circleMarker(ll,{radius:8,color:'#fff',weight:3,fillColor:'#2463eb',fillOpacity:1}).addTo(liveMap);
+ else liveMarker.setLatLng(ll);
+ liveMap.setView(ll,16);
+}
+function renderHistoryMaps(){
+ historyMaps.forEach(m=>{try{m.remove()}catch(e){}});historyMaps=[];
+ if(!window.L)return;
+ data.workouts.filter(w=>w.type==='Laufen'&&w.run&&w.run.path&&w.run.path.length).slice(0,10).forEach(w=>{
+  const el=document.getElementById('miniMap-'+w.id);if(!el)return;
+  const pts=w.run.path.map(p=>[p[0],p[1]]);
+  const map=makeBaseMap(el,pts[0]);if(!map)return;
+  const line=L.polyline(pts,{color:'#2463eb',weight:4}).addTo(map);
+  map.fitBounds(line.getBounds(),{padding:[12,12]});historyMaps.push(map);
+ });
+}
+function openRunMap(id){
+ const w=data.workouts.find(x=>String(x.id)===String(id));if(!w||!w.run||!w.run.path||!w.run.path.length){toast('Für diesen Lauf gibt es keine GPS-Strecke');return}
+ document.getElementById('runMapTitle').textContent=(w.name||'Lauf')+' · '+w.date;
+ document.getElementById('runMapModal').classList.add('open');
+ if(largeMap){largeMap.remove();largeMap=null}
+ setTimeout(()=>{
+  const pts=w.run.path.map(p=>[p[0],p[1]]);largeMap=makeBaseMap(document.getElementById('runMapLarge'),pts[0]);
+  if(largeMap){const line=L.polyline(pts,{color:'#2463eb',weight:5}).addTo(largeMap);largeMap.fitBounds(line.getBounds(),{padding:[24,24]});L.circleMarker(pts[0],{radius:7,color:'#fff',weight:2,fillColor:'#20a464',fillOpacity:1}).addTo(largeMap);if(pts.length>1)L.circleMarker(pts[pts.length-1],{radius:7,color:'#fff',weight:2,fillColor:'#d94b4b',fillOpacity:1}).addTo(largeMap);largeMap.invalidateSize()}
+ },120);
+}
+function closeRunMap(){document.getElementById('runMapModal').classList.remove('open')}
+
 function startGPS(){document.getElementById('gpsStatus').textContent='Suche…';runWatch=navigator.geolocation.watchPosition(gpsSuccess,gpsError,{enableHighAccuracy:true,maximumAge:1000,timeout:15000})}
 function startRun(){
  if(!navigator.geolocation){toast('GPS wird nicht unterstützt');return}if(!window.isSecureContext){toast('GPS benötigt eine sichere HTTPS-Verbindung');return}
- runElapsed=0;runDistanceM=0;lastGPS=null;runPath=[];runStartedAt=Date.now();runActive=true;runPaused=false;intervalPhase='work';intervalRound=1;phaseStartedAt=Date.now();phaseStartDistance=0;
+ runElapsed=0;runDistanceM=0;lastGPS=null;runPath=[];if(liveLine)liveLine.setLatLngs([]);if(liveMarker){liveMap.removeLayer(liveMarker);liveMarker=null;}runStartedAt=Date.now();runActive=true;runPaused=false;intervalPhase='work';intervalRound=1;phaseStartedAt=Date.now();phaseStartDistance=0;
  startGPS();runTick=setInterval(tickRun,250);document.getElementById('runStartBtn').disabled=true;document.getElementById('runPauseBtn').disabled=false;document.getElementById('runStopBtn').disabled=false;document.getElementById('gpsHint').textContent='Lauf läuft. Lass Titan Fit geöffnet, damit GPS und Zeitmessung möglichst zuverlässig weiterlaufen.';tickRun();toast('Lauf gestartet');
 }
 function pauseRun(){if(!runActive)return;runElapsed+=Date.now()-runStartedAt;runActive=false;runPaused=true;if(runWatch!==null)navigator.geolocation.clearWatch(runWatch);runWatch=null;clearInterval(runTick);runTick=null;lastGPS=null;document.getElementById('runPauseBtn').style.display='none';document.getElementById('runResumeBtn').style.display='block';document.getElementById('gpsStatus').textContent='Pausiert';toast('Lauf pausiert')}
@@ -124,7 +178,7 @@ function tickRun(){
   document.getElementById('phaseProgress').textContent=intervalPhase==='finished'?'✓':(timed||intervalPhase==='rest'?fmtTime(rem):Math.ceil(rem)+' m');
  }
 }
-function renderRunStats(elapsed){elapsed=elapsed??(runElapsed+(runActive?Date.now()-runStartedAt:0));document.getElementById('runTime').textContent=fmtTime(elapsed/1000);document.getElementById('runDistance').textContent=(runDistanceM/1000).toFixed(2).replace('.',',')+' km';document.getElementById('runPace').textContent=fmtPace(runDistanceM,elapsed/1000)}
+function renderRunStats(elapsed){elapsed=elapsed??(runElapsed+(runActive?Date.now()-runStartedAt:0));document.getElementById('runTime').textContent=fmtDuration(elapsed/1000);document.getElementById('runDistance').textContent=(runDistanceM/1000).toFixed(2).replace('.',',')+' km';document.getElementById('runPace').textContent=fmtPace(runDistanceM,elapsed/1000)}
 function stopRun(){
  if(!runActive&&!runPaused)return;if(runActive)runElapsed+=Date.now()-runStartedAt;if(runWatch!==null)navigator.geolocation.clearWatch(runWatch);runWatch=null;clearInterval(runTick);runTick=null;runActive=false;runPaused=false;lastGPS=null;
  let seconds=Math.round(runElapsed/1000),km=Number((runDistanceM/1000).toFixed(3));
@@ -133,12 +187,18 @@ function stopRun(){
  document.getElementById('runStartBtn').disabled=false;document.getElementById('runPauseBtn').disabled=true;document.getElementById('runStopBtn').disabled=true;document.getElementById('runPauseBtn').style.display='block';document.getElementById('runResumeBtn').style.display='none';document.getElementById('gpsStatus').textContent='Beendet';document.getElementById('gpsHint').textContent='Lauf gespeichert. Du kannst einen neuen Lauf starten.';renderRunHistory();showPage('run');
 }
 function renderRunHistory(){
- let el=document.getElementById('runHistory');if(!el)return;let runs=data.workouts.filter(w=>w.type==='Laufen').slice(0,10);
+ let el=document.getElementById('runHistory');if(!el)return;
+ let runs=data.workouts.filter(w=>w.type==='Laufen').slice(0,10);
  if(!runs.length){el.innerHTML='<div class="empty">Hier erscheinen deine aufgezeichneten Läufe.</div>';return}
- el.innerHTML=runs.map(w=>`<div class="logitem"><strong>${esc(w.name||'Lauf')}</strong><div class="tiny muted">${esc(w.date)} · ${esc(w.duration||0)} min</div><div style="margin-top:5px;font-weight:750">${Number(w.distance||0).toFixed(2).replace('.',',')} km <span class="tiny muted">· ${w.run?fmtPace(w.run.distanceM,w.run.seconds):'manuell eingetragen'}</span></div>${w.details?`<div class="tiny muted" style="white-space:pre-wrap;margin-top:5px">${esc(w.details)}</div>`:''}</div>`).join('');
+ el.innerHTML=runs.map(w=>{
+  const hasPath=!!(w.run&&w.run.path&&w.run.path.length);
+  return `<div class="logitem"><strong>${esc(w.name||'Lauf')}</strong><div class="tiny muted">${esc(w.date)} · ${w.run?fmtDuration(w.run.seconds):esc(w.duration||0)+' min'}</div><div style="margin-top:5px;font-weight:750">${Number(w.distance||0).toFixed(2).replace('.',',')} km <span class="tiny muted">· ${w.run?fmtPace(w.run.distanceM,w.run.seconds):'manuell eingetragen'}</span></div>${hasPath?`<div id="miniMap-${w.id}" class="run-map-mini" onclick="openRunMap('${w.id}')" title="Strecke vergrößern"></div><button class="btn soft small" style="margin-top:8px" onclick="openRunMap('${w.id}')">Strecke ansehen</button>`:'<div class="map-caption">Für diesen Lauf wurde keine GPS-Strecke gespeichert.</div>'}${w.details?`<div class="tiny muted" style="white-space:pre-wrap;margin-top:7px">${esc(w.details)}</div>`:''}</div>`;
+ }).join('');
+ setTimeout(renderHistoryMaps,100);
 }
 
 render();
 renderRunHistory();
+if(document.getElementById('run').classList.contains('active'))initLiveMap();
 </script><script>if("serviceWorker" in navigator && location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));}</script>
 </body></html>
